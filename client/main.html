@@ -1,0 +1,65 @@
+<head>
+    <title>meteorCRUD</title>
+</head>
+
+<body>
+<h1>Welcome to Todude!</h1>
+{{> form}}
+{{> list}}
+
+</body>
+
+<template name="form">
+    <form>
+        <div class="row">
+            <div class="medium-offset-2 medium-8 columns">
+                <label>TODo
+                    <input id="todo-input" type="text" placeholder="get on my horse, etc...">
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" class="button">ADD</button>
+        </div>
+    </form>
+</template>
+
+<template name="list">
+    <table class="hover row medium-8">
+        <thead>
+        <tr>
+            <th>What to do ?</th>
+            <th class="medium-3">actions</th>
+        </tr>
+        </thead>
+        <tbody>
+
+
+            {{#each todos}}
+                {{#if todo.edit edited}}
+                    <tr>
+                        <td>
+                            <form>
+                                <div class="row">
+                                    <div class="medium-4 columns">
+                                            <input id="todo-input" type="text" value="{{todo}}">
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                {{else}}
+                <tr>
+                    <td>
+                        {{todo}}
+                    </td>
+                    <td>
+                        <button class="success button">Upd</button>
+                        <button class="alert button medium-offset-1">Del</button>
+                    </td>
+                </tr>
+                {{/if}}
+            {{/each}}
+        </tbody>
+    </table>
+</template>
