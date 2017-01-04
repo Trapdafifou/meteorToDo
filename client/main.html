@@ -3,17 +3,17 @@
 </head>
 
 <body>
-<h1>Welcome to Todude!</h1>
+<h1>To-do!</h1>
 {{> form}}
 {{> list}}
 
 </body>
 
 <template name="form">
-    <form>
+    <form class="form">
         <div class="row">
             <div class="medium-offset-2 medium-8 columns">
-                <label>TODo
+                <label>
                     <input id="todo-input" type="text" placeholder="get on my horse, etc...">
                 </label>
             </div>
@@ -35,31 +35,35 @@
         <tbody>
 
 
-            {{#each todos}}
-                {{#if todo.edit edited}}
-                    <tr>
-                        <td>
-                            <form>
-                                <div class="row">
-                                    <div class="medium-4 columns">
-                                            <input id="todo-input" type="text" value="{{todo}}">
-                                    </div>
+        {{#each todos}}
+            {{#if edited}}
+                <tr>
+                    <td>
+                        <form>
+                            <div class="row">
+                                <div class="medium-4 columns">
+                                    <input id="todo-update-input" type="text" value="{{todo}}">
                                 </div>
-                            </form>
-                        </td>
-                    </tr>
-                {{else}}
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <button class="success button val-update">Val</button>
+                        <button class="danger button cancel">Can</button>
+                    </td>
+                </tr>
+            {{else}}
                 <tr>
                     <td>
                         {{todo}}
                     </td>
                     <td>
-                        <button class="success button">Upd</button>
-                        <button class="alert button medium-offset-1">Del</button>
+                        <button class="success button  update">Upd</button>
+                        <button class="alert button delete">Del</button>
                     </td>
                 </tr>
-                {{/if}}
-            {{/each}}
+            {{/if}}
+        {{/each}}
         </tbody>
     </table>
 </template>
