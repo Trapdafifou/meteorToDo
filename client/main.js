@@ -10,7 +10,7 @@ Template.form.events({
         inputVal = template.find('#todo-input').value;
         if(inputVal) {
             todos.insert({todo: inputVal, edited:false});
-            inputVal = "";
+            template.find('#todo-input').value = "";
         }else{
             alert('veuillez remplir le champs')
         }
